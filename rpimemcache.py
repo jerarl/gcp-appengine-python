@@ -20,7 +20,7 @@ import urllib
 import paste
 
 import webapp2
-from google.appengine.api import memcache
+#from google.appengine.api import memcache
 
 # [END imports]
 
@@ -28,10 +28,11 @@ from google.appengine.api import memcache
 class MainPage(webapp2.RequestHandler):
 
     def get(self):
-        if memcache.get('test'):
-            message = memcache.get('test')
-        else:
-            message = 'No content for key \'test\''
+        #if memcache.get('test'):
+        #    message = memcache.get('test')
+        #else:
+        #    message = 'No content for key \'test\''
+        message = 'test'
         self.response.write(message)
 
 # [END main_page]
@@ -55,10 +56,10 @@ app = webapp2.WSGIApplication([
     ,('/sign', Guestbook),
 ], debug=True)
 
-#def main():
-#    from paste import httpserver
-#    httpserver.serve(app, host='127.0.0.1', port='8088')
+def main():
+    from paste import httpserver
+    httpserver.serve(app, host='127.0.0.1', port='8088')
 
-#if __name__ == '__main__':
-#    main()
+if __name__ == '__main__':
+    main()
 # [END app]
