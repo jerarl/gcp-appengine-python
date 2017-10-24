@@ -56,10 +56,10 @@ app = webapp2.WSGIApplication([
     ,('/sign', Guestbook),
 ], debug=True)
 
-def main():
-    from paste import httpserver
-    httpserver.serve(app, host='127.0.0.1', port='8088')
+#def main():
+#    from paste import httpserver
+#    httpserver.serve(app, host='127.0.0.1', port='8088')
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+#    main()
 # [END app]
