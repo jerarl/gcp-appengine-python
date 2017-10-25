@@ -18,6 +18,7 @@
 import os
 import urllib
 
+from google.appengine.api import memcache
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
@@ -123,8 +124,12 @@ class setcache(webapp2.RequestHandler):
     def post(self):
         self.response.write('Cache POST')
     def get(self):
-        self.response.write('Cache GET')
+        stats = memcache.get_stats()
 
+        self.response.write('<b>Cache Hits:{}</b><br>'.format(stats['hits']))
+        self.response.write('<b>Cache Misses:{}</b><br><br>'.format(
+            stats['misses']))
+        #self.response.write('Cache GET')
 
 # [END guestbook]
 
