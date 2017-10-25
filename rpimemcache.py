@@ -122,6 +122,7 @@ class Guestbook(webapp2.RequestHandler):
 class setcache(webapp2.RequestHandler):
 
     def post(self):
+        memcache.add(key="rpitest", value="Sample value from python app", time=3600)
         self.response.write('Cache POST')
     def get(self):
         stats = memcache.get_stats()
@@ -129,6 +130,7 @@ class setcache(webapp2.RequestHandler):
         self.response.write('<b>Cache Hits:{}</b><br>'.format(stats['hits']))
         self.response.write('<b>Cache Misses:{}</b><br><br>'.format(
             stats['misses']))
+        self.response.write('<b>rpitest key:{}</b><br><br>'.format(memcache.get('rpitest')))
         #self.response.write('Cache GET')
 
 # [END guestbook]
