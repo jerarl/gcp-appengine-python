@@ -124,6 +124,7 @@ class setcache(webapp2.RequestHandler):
     def post(self):
         memcache.add(key="rpitest", value="Sample value from python app", time=3600)
         self.response.write('Cache POST')
+        self.response.write(self.request)
     def get(self):
         stats = memcache.get_stats()
 
