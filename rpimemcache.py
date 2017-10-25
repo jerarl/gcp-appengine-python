@@ -117,10 +117,22 @@ class Guestbook(webapp2.RequestHandler):
         self.redirect('/?' + urllib.urlencode(query_params))
 # [END guestbook]
 
+# [START guestbook]
+class setcache(webapp2.RequestHandler):
+
+    def post(self):
+        self.response.write('Cache POST')
+    def get(self):
+        self.response.write('Cache GET')
+
+
+# [END guestbook]
+
 
 # [START app]
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/sign', Guestbook),
+    ('/cache', setcache)
 ], debug=True)
 # [END app]
