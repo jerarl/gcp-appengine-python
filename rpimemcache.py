@@ -131,6 +131,8 @@ class setcache(webapp2.RequestHandler):
         self.response.write('<b>Cache Misses:{}</b><br><br>'.format(
             stats['misses']))
         self.response.write('<b>rpitest key:{}</b><br><br>'.format(memcache.get('rpitest')))
+
+        self.response.write('<b>get_stats:{}</b><br><br>'.format(stats))
         #self.response.write('Cache GET')
 
 # [END guestbook]
